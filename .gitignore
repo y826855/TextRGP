@@ -1,0 +1,86 @@
+# IDE 관련 설정 파일
+.idea/
+.vs/
+*.user
+*.suo
+
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Linker files
+*.ilk
+
+# Debugger Files
+*.pdb
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+*.so.*
+
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Build directories
+build/
+Build/
+build-*/
+
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+install_manifest.txt
+compile_commands.json
+
+# Temporary files
+*.tmp
+*.log
+*.bak
+*.swp
+
+# vcpkg
+vcpkg_installed/
+
+# debug information files
+*.dwo
+
+# test output & cache
+Testing/
+.cache/
+TRPG/x64/Debug/TRPG.exe.recipe
+TRPG/x64/Debug/vc143.idb
+TRPG/x64/Debug/TRPG.tlog/CL.command.1.tlog
+TRPG/x64/Debug/TRPG.tlog/Cl.items.tlog
+TRPG/x64/Debug/TRPG.tlog/CL.read.1.tlog
+TRPG/x64/Debug/TRPG.tlog/CL.write.1.tlog
+TRPG/x64/Debug/TRPG.tlog/link.command.1.tlog
+TRPG/x64/Debug/TRPG.tlog/link.read.1.tlog
+TRPG/x64/Debug/TRPG.tlog/link.secondary.1.tlog
+TRPG/x64/Debug/TRPG.tlog/link.write.1.tlog
+TRPG/x64/Debug/TRPG.tlog/TRPG.lastbuildstate
