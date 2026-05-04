@@ -154,6 +154,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Alchemy\AlchemyWorkShop.cpp" />
     <ClCompile Include="Alchemy\Postion\HPPotion.cpp" />
     <ClCompile Include="Alchemy\Postion\MPPotion.cpp" />
     <ClCompile Include="Alchemy\Postion\PotionBase.cpp">
@@ -232,8 +233,87 @@
       <SDLCheck>true</SDLCheck>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Data\ItemData.cpp" />
+    <ClCompile Include="Dungeon\Dungeon.cpp" />
     <ClCompile Include="Inventroy\InventoryManager.cpp" />
+    <ClCompile Include="Inventroy\Inventory.cpp" />
     <ClCompile Include="Inventroy\ItemManager.cpp" />
+    <ClCompile Include="Lobby\Lobby.cpp">
+      <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <Optimization>Disabled</Optimization>
+      <SupportJustMyCode>true</SupportJustMyCode>
+      <AssemblerOutput>NoListing</AssemblerOutput>
+      <AssemblerListingLocation>x64\Debug\</AssemblerListingLocation>
+      <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
+      <BrowseInformation>false</BrowseInformation>
+      <BrowseInformationFile>x64\Debug\</BrowseInformationFile>
+      <CompileAs>Default</CompileAs>
+      <UseDynamicDebugging>false</UseDynamicDebugging>
+      <ConformanceMode>true</ConformanceMode>
+      <DiagnosticsFormat>Column</DiagnosticsFormat>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <ErrorReporting>Prompt</ErrorReporting>
+      <ExpandAttributedSource>false</ExpandAttributedSource>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <EnableASAN>false</EnableASAN>
+      <EnableFuzzer>false</EnableFuzzer>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <EnableVectorLength>NotSet</EnableVectorLength>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <GenerateModuleDependencies>false</GenerateModuleDependencies>
+      <GenerateSourceDependencies>false</GenerateSourceDependencies>
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+      <LanguageStandard>Default</LanguageStandard>
+      <LanguageStandard_C>Default</LanguageStandard_C>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ModuleDependenciesFile>x64\Debug\</ModuleDependenciesFile>
+      <ModuleOutputFile>x64\Debug\</ModuleOutputFile>
+      <OmitDefaultLibName>false</OmitDefaultLibName>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <ObjectFileName>x64\Debug\</ObjectFileName>
+      <CallingConvention>Cdecl</CallingConvention>
+      <ProgramDataBaseFileName>x64\Debug\vc143.pdb</ProgramDataBaseFileName>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>x64\Debug\TRPG.pch</PrecompiledHeaderOutputFile>
+      <PreprocessToFile>false</PreprocessToFile>
+      <PreprocessKeepComments>false</PreprocessKeepComments>
+      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+      <ShowIncludes>false</ShowIncludes>
+      <SourceDependenciesFile>x64\Debug\</SourceDependenciesFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <SmallerTypeCheck>false</SmallerTypeCheck>
+      <SpectreMitigation>false</SpectreMitigation>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <TrackerLogDirectory>x64\Debug\TRPG.tlog\</TrackerLogDirectory>
+      <TranslateIncludes>false</TranslateIncludes>
+      <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <UseFullPaths>true</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <XMLDocumentationFileName>x64\Debug\</XMLDocumentationFileName>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <IntelJCCErratum>false</IntelJCCErratum>
+      <BuildStlModules>false</BuildStlModules>
+      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
+      <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
+      <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
+      <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <LinkCompiled>true</LinkCompiled>
+    </ClCompile>
     <ClCompile Include="Monster\MonsterBase.cpp" />
     <ClCompile Include="Monster\Slime.cpp" />
     <ClCompile Include="Player\Archer.cpp" />
@@ -241,10 +321,11 @@
     <ClCompile Include="Player\PlayerBase.cpp" />
     <ClCompile Include="Player\Thief.cpp" />
     <ClCompile Include="Player\Warrior.cpp" />
-    <ClCompile Include="Alchemy\AlchemyWorkShop.cpp" />
+    <ClCompile Include="Alchemy\AlchemyManager.cpp" />
     <ClCompile Include="TRPG.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Alchemy\AlchemyWorkShop.h" />
     <ClInclude Include="Alchemy\Postion\HPPotion.h" />
     <ClInclude Include="Alchemy\Postion\MPPotion.h" />
     <ClInclude Include="Alchemy\Postion\PotionBase.h" />
@@ -252,17 +333,25 @@
     <ClInclude Include="Data\MonsterData.h" />
     <ClInclude Include="Data\PlayerData.h" />
     <ClInclude Include="Data\PotionRecipe.h" />
-    <ClInclude Include="IHitable.h" />
+    <ClInclude Include="Dungeon\Dungeon.h" />
+    <ClInclude Include="InputHelper.h" />
+    <ClInclude Include="Interface\IBattleObject.h" />
+    <ClInclude Include="Interface\IEnterable.h" />
     <ClInclude Include="Inventroy\InventoryManager.h" />
+    <ClInclude Include="Inventroy\Inventory.h" />
     <ClInclude Include="Inventroy\ItemManager.h" />
+    <ClInclude Include="Lobby\Lobby.h" />
     <ClInclude Include="Monster\MonsterBase.h" />
     <ClInclude Include="Monster\Slime.h" />
     <ClInclude Include="Player\Archer.h" />
     <ClInclude Include="Player\Mage.h" />
     <ClInclude Include="Player\PlayerBase.h" />
+    <ClInclude Include="Player\PlayerManager.h" />
     <ClInclude Include="Player\Thief.h" />
     <ClInclude Include="Player\Warrior.h" />
-    <ClInclude Include="Alchemy\AlchemyWorkShop.h" />
+    <ClInclude Include="Alchemy\AlchemyManager.h" />
+    <ClInclude Include="PrintHelper.h" />
+    <ClInclude Include="Singleton.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
