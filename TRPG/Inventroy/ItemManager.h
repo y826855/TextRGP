@@ -2,14 +2,17 @@
 #include <algorithm>
 #include <map>
 
+#include "../Singleton.h"
 #include "../Data/ItemData.h"
 
 
 // 잡탬 & 포션재료만
-class ItemManager
+class ItemManager : public Singleton<ItemManager>
 {
-    std::map<EItem, ItemData*> ItemContainer;
+    friend class Singleton<ItemManager>;
     
+    std::map<EItem, ItemData*> ItemContainer;
+
 public:
     
     ItemManager()
@@ -20,7 +23,15 @@ public:
         ItemContainer.insert(make_pair(EItem::Water, new ItemData("물", 10)));
     }
 
-    ~ItemManager()
+    string GetNameByID(EItem _itemID)
+    {
+        auto it = ItemContainer.find(_itemID);
+        if (it != ItemContainer.end())
+            return ItemContainer[_itemID]->GetName();
+        return "";
+    }
+
+    ~ItemManager() override
     {
         for (auto& pair : ItemContainer)
         {

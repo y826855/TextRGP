@@ -1,41 +1,26 @@
 ﻿#pragma once
 
-#include <map>
-
-#include "Postion/HPPotion.h"
-#include "Postion/MPPotion.h"
+#include <unordered_map>
 #include "Postion/PotionBase.h"
+#include "../Singleton.h"
 
 using namespace std;
 
-class AlchemyWorkShop
+class AlchemyWorkShop : public Singleton<AlchemyWorkShop> 
 {
-    map<string, PotionBase*> PotionRecipeContainer;
+    friend class Singleton<AlchemyWorkShop>;
+    
+    //unordered_map<EPotion, PotionBase*> PotionContainer;
+    unordered_map<string, PotionBase*> PotionSearchContainer;
+    unordered_map<string, vector<PotionBase*>> PotionRequireDataContainer;            
     
 public:
-    AlchemyWorkShop()
-    {
-        InsertData(new HPPotion());
-        InsertData(new MPPotion());
-    }
+    AlchemyWorkShop();
 
-    void InsertData(PotionBase* potion)
-    {
-        PotionRecipeContainer.insert({ potion->GetName(), potion });
-    }
+    void InsertData(PotionBase* potion);
 
-    void SearchPotionRecipe(string _potionName)
-    {
-        auto it = PotionRecipeContainer.find(_potionName);
-        if (it != PotionRecipeContainer.end()) 
-        {
-            //찾음
-        }
-        else
-        {
-            //없음
-        }
-    }
+    //return 포션 3개
+    void SearchPotionRecipe(string _searchName);
 
     void MakePotion()
     {
@@ -44,16 +29,5 @@ public:
         //플레이어 데이터 접근 & 사용
     }
 
-    ~AlchemyWorkShop()
-    {
-        for (auto& pair : PotionRecipeContainer)
-        {
-            if (pair.second != nullptr)
-            {
-                delete pair.second;
-                pair.second = nullptr; // 안전을 위해 nullptr 처리
-            }
-        }
-        PotionRecipeContainer.clear();
-    }
+    ~AlchemyWorkShop() override;
 };
