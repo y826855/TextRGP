@@ -1,12 +1,31 @@
 ﻿#pragma once
 #include "PlayerBase.h"
 
-class Thief : PlayerBase
+class Thief : public PlayerBase
 {
 public:
-    Thief(const string& _name, int _hp, int _mp, int _atk, int _def)
-        : PlayerBase(_name, _hp, _mp, _atk, _def)
+
+    Thief(const string& name, int hp, int mp, int atk, int def)
+    :PlayerBase(name, hp, mp, atk, def)
     {
-        playerData->SetJob(EPlayerJob::Thief);
+        SetJob(EPlayerJob::EThief);
+        AddAtk(30);
+    }
+    
+    Thief(PlayerBase* player)
+    : PlayerBase(player, EPlayerJob::EThief)
+    {
+        AddAtk(30);
+    }
+
+    void Attack() override
+    {
+        
+    }
+
+    void ShowJobStat() override
+    {
+        cout << " * 도적으로 전직하였습니다. (ATK + 30)" << endl;
+        cout << " * 빠르게 공격한다!" << endl;
     }
 };
