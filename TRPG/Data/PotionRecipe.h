@@ -1,18 +1,58 @@
 ﻿#pragma once
+#include <vector>
+
 #include "ItemData.h"
+#include "../Inventroy/ItemManager.h"
+
+
+enum class EPotion
+{
+    EHPPotion,
+    EMPPotion,
+};
+
+struct RequireItem
+{
+    EItem ItemID;
+    int Amount;
+
+    RequireItem(EItem _id, int _amount)
+    {
+        ItemID = _id;
+        Amount = _amount;
+    }
+
+    void ShowInfo()
+    {
+        auto name = ItemManager::GetInstance()->GetNameByID(ItemID);
+        cout << name << " * " << Amount;
+    }
+};
 
 struct PotionRecipe
 {
 private:
-    EItem* RequireItems;
+    vector<RequireItem> RequireItems;
+    
 public:
-    PotionRecipe(EItem* _itemData)
+    
+    PotionRecipe(vector<RequireItem> _requireItems)
     {
-        RequireItems = _itemData; // 포션 재료 초기화
+        RequireItems = _requireItems; // 포션 재료 초기화
     }
 
-    ~PotionRecipe()
+    vector<RequireItem> GetRequireItems() { return RequireItems; }
+
+    void ShowRequireItem()
     {
-        delete[] RequireItems;
+        cout << " ( ";
+        bool isFirst = true;
+        for (auto& item : RequireItems)
+        {
+            if (!isFirst) cout << ", "; 
+            item.ShowInfo();
+            isFirst = false;
+        }
+        cout << " ) ";
     }
 };

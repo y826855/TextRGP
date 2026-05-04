@@ -1,4 +1,6 @@
 ﻿#pragma once
+#include <vector>
+
 #include "PotionBase.h"
 #include "../../Data/PotionRecipe.h"
 
@@ -7,10 +9,13 @@ class MPPotion : public PotionBase
 {
 public:
 
-    MPPotion() : PotionBase("MP포션",
-        new EItem [ EItem::Berry, EItem::Herb ])
+
+    MPPotion() : PotionBase(
+    "MP 포션",
+PotionRecipe(vector<RequireItem>{
+    { EItem::Berry, 2 }, { EItem::Herb, 1 }
+        }))
     {
-        
     }
     
     void Use() override

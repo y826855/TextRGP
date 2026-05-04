@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <string>
+#include <utility>
 
 #include "../../Data/ItemData.h"
 #include "../../Data/PotionRecipe.h"
@@ -15,10 +16,9 @@ protected:
     PotionRecipe Recipe;
     
 public:
-
-    // 생성자에서 자식으로부터 데이터를 직접 받음
-    PotionBase(std::string _name, EItem* _requireItems)
-        : Name(_name), Recipe(_requireItems) 
+    
+    PotionBase(std::string _name, PotionRecipe _requireItems)
+        : Name(std::move(_name)), Recipe(std::move(_requireItems)) 
     {
     }
 
