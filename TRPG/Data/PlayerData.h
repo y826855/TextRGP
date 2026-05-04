@@ -11,13 +11,13 @@ enum EStat
     DEF = 3,
 };
 
-enum EPlayerJob
+enum class EPlayerJob
 {
     None = 0,
-    Warrior = 1,
-    Mage = 2,
-    Thief = 3,
-    Archer = 4,
+    EWarrior = 1,
+    EMage = 2,
+    EThief = 3,
+    EArcher = 4,
 };
 
 
@@ -30,15 +30,6 @@ struct PlayerData
     PlayerData(const string& _name, const int* _statArray)
     {
         PlayerName = _name;
-        playerJob = EPlayerJob::None;
         for (int i = 0; i < 4; ++i) StatArray[i] = _statArray[i];
     }
-
-
-    void SetJob(EPlayerJob _job) { playerJob = _job; }
-    
-    int GetHP() { return StatArray[EStat::HP]; }
-    int GetMP() { return StatArray[EStat::MP]; }
-    int GetDef() { return StatArray[EStat::DEF]; }
-    int GetAtk() { return StatArray[EStat::ATK]; }
 };

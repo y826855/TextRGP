@@ -3,7 +3,7 @@
 
 using namespace std;
 
-enum EItem
+enum class EItem
 {
     None = 0,
     SlimeJelly = 1,
@@ -40,6 +40,8 @@ public:
 
         return *this;
     }
+
+    string GetName() { return Name; }
     
     void PrintInfo() const
     {
