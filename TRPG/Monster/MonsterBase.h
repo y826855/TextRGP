@@ -1,17 +1,22 @@
 ﻿#pragma once
-#include "../IHitable.h"
+#include "../Interface/IBattleObject.h"
 #include "../Data/MonsterData.h"
 
-class MonsterBase : IHitable
+class MonsterBase : public IBattleObject
 {
-    MonsterData* Data;
+protected:
+    MonsterData Data;
+
 public:
-    MonsterBase(MonsterData* _data) : Data(_data){}
-    
-    void OnHit(int damage)
+
+    MonsterBase(MonsterData _data) : Data(_data)
     {
-        //TODO 계산식 적용
+        
     }
-    
-    virtual ~MonsterBase() { delete Data; }
+
+    void OnHit(int _damage) override;
+    void Attack(IBattleObject* target) override;
+    bool IsDead() override;
+    string GetName();
+    RequireItem GetDropItem() const;
 };

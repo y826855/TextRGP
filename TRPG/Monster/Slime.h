@@ -1,8 +1,10 @@
 ﻿#pragma once
 #include "MonsterBase.h"
 
-class Slime : MonsterBase
+class Slime : public MonsterBase
 {
 public:
-    
+
+    Slime();
+    void Attack(IBattleObject* target) override;
 };
