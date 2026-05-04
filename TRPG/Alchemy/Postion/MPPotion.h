@@ -3,15 +3,16 @@
 
 #include "PotionBase.h"
 #include "../../Data/PotionRecipe.h"
+#include "../../Player/PlayerManager.h"
 
 
 class MPPotion : public PotionBase
 {
+    int increaseAmount = 20;
 public:
 
-
     MPPotion() : PotionBase(
-    "MP 포션",
+    "MP포션",
 PotionRecipe(vector<RequireItem>{
     { EItem::Berry, 2 }, { EItem::Herb, 1 }
         }))
@@ -20,6 +21,7 @@ PotionRecipe(vector<RequireItem>{
     
     void Use() override
     {
-        //TODO : 플레이어 데이터 접근 & 마나 회복   
+        //TODO : 사용시 소모
+        PlayerManager::GetInstance()->GetPlayer()->AddMP(increaseAmount);
     }
 };

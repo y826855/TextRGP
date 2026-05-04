@@ -12,41 +12,32 @@ enum class EItem
     Berry = 4,
 };
 
+struct RequireItem
+{
+    EItem ItemID;
+    int Amount;
+
+    RequireItem(EItem _id, int _amount);
+    void ShowInfo();
+};
+
+
 struct ItemData
 {
+    
 private:
     
     string Name = "";
     int Price = 0;
-    int Stack = 0; //?
     
 public:
 
-    ItemData(string _name, int _price)
-    {
-        Name = _name;
-        Price = _price;
-        Stack = 0;
-    }
+    ItemData(string _name, int _price);
 
     // 대입 연산자 오버로딩 (Deep Copy 구현)
-    ItemData& operator=(const ItemData& other)
-    {
-        if (this == &other) return *this;
-    
-        this->Name = other.Name;
-        this->Price = other.Price;
-        this->Stack = other.Stack;
-
-        return *this;
-    }
+    ItemData& operator=(const ItemData& other);
 
     string GetName() { return Name; }
     
-    void PrintInfo() const
-    {
-        //TODO 출력 메세지 맞추기
-        cout << "Name: " << Name << " | Price: " << Price << " | Stack: " << Stack << endl;
-    }
-
+    void PrintInfo() const;
 };

@@ -2,7 +2,6 @@
 #include <vector>
 
 #include "ItemData.h"
-#include "../Inventroy/ItemManager.h"
 
 
 enum class EPotion
@@ -11,23 +10,6 @@ enum class EPotion
     EMPPotion,
 };
 
-struct RequireItem
-{
-    EItem ItemID;
-    int Amount;
-
-    RequireItem(EItem _id, int _amount)
-    {
-        ItemID = _id;
-        Amount = _amount;
-    }
-
-    void ShowInfo()
-    {
-        auto name = ItemManager::GetInstance()->GetNameByID(ItemID);
-        cout << name << " * " << Amount;
-    }
-};
 
 struct PotionRecipe
 {

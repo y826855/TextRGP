@@ -11,16 +11,16 @@ class HPPotion : public PotionBase
 public:
 
     HPPotion() : PotionBase(
-        "HP 포션",
+        "HP포션",
     PotionRecipe(vector<RequireItem>{
-        { EItem::Water, 2 }, { EItem::Herb, 1 }
+        { EItem::Water, 1 }, { EItem::Herb, 1 }
     }))
     {
     }
     
     void Use() override
     {
-        //TODO : 플레이어 데이터 접근 & HP 회복
+        //TODO : 갯수 감소
         PlayerManager::GetInstance()->GetPlayer()->AddHP(increaseAmount);
     }
 

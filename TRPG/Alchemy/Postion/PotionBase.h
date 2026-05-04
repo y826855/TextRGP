@@ -12,7 +12,6 @@ class PotionBase
     
 protected:
     std::string Name;
-    //PotionRecipe* Recipe;
     PotionRecipe Recipe;
     
 public:

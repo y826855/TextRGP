@@ -1,64 +1,46 @@
 ﻿#include "AlchemyWorkShop.h"
-#include "../Inventroy/ItemManager.h"
-#include "Postion/HPPotion.h"
-#include "Postion/MPPotion.h"
 
-AlchemyWorkShop::AlchemyWorkShop()
+#include "AlchemyManager.h"
+#include "../InputHelper.h"
+
+void AlchemyWorkShop::ShowMenu()
 {
-    InsertData(new HPPotion());
-    InsertData(new MPPotion());
-
-    //scriptable
+    cout << "=== 포션 제작소 ===" << endl
+    << "1. 전체 레시피 보기" << endl
+    << "2. 포션 이름으로 검색" << endl
+    << "3. 재료로 검색" << endl
+    << "0. 돌아가기" << endl << endl;
 }
 
-void AlchemyWorkShop::InsertData(PotionBase* potion)
+void AlchemyWorkShop::Enter()
 {
-    PotionSearchContainer.insert({ potion->GetName(), potion });
-    auto requireItems = potion->GetRecipe().GetRequireItems();
+    bIsEnter = true;
+    string inputName;
 
-    for (auto require : requireItems)
+    ShowMenu();
+    
+    while (bIsEnter)
     {
-        auto itemName = ItemManager::GetInstance()->GetNameByID(require.ItemID);
-        PotionRequireDataContainer[itemName].push_back(potion);
-    }
-}
-
-void AlchemyWorkShop::SearchPotionRecipe(string _searchName)
-{
-    //포션 이름으로 찾기
-    auto potionIter = PotionSearchContainer.find(_searchName);
-    if (potionIter != PotionSearchContainer.end()) 
-    {
-        cout << " -> ";
-        cout << potionIter->second->GetName() << " ";
-        potionIter->second->GetRecipe().ShowRequireItem();
-        cout << endl;
-        return;
-    }
-
-    //재료 이름으로 찾기
-    auto itemIter = PotionRequireDataContainer.find(_searchName);
-    if (itemIter != PotionRequireDataContainer.end())
-    {
-        for (auto item : itemIter->second)
+        int selection = InputHelper::GetValidInput<int>("선택: ", 0, 4);
+        switch (selection)
         {
-            cout << " -> ";
-            cout << item->GetName() << " "; 
-            item->GetRecipe().ShowRequireItem();
-            cout << endl;
+        case 1:
+            AlchemyManager::GetInstance()->ShowAllRecipe();
+            break;
+        case 2:
+            inputName = InputHelper::GetValidName("검색할 포션 이름: ", 1, 50);
+            AlchemyManager::GetInstance()->SearchRecipeByName(inputName);
+            break;
+        case 3:
+            inputName = InputHelper::GetValidName("검색할 재료: ", 1, 50);
+            AlchemyManager::GetInstance()->SearchRecipeByItemName(inputName);
+            break;
+        case 0: Quit();
         }
     }
 }
 
-AlchemyWorkShop::~AlchemyWorkShop()
+void AlchemyWorkShop::Quit()
 {
-    for (auto& pair : PotionSearchContainer)
-    {
-        if (pair.second != nullptr)
-        {
-            delete pair.second;
-            pair.second = nullptr; // 안전을 위해 nullptr 처리
-        }
-    }
-    PotionSearchContainer.clear();
+    bIsEnter = false;
 }
