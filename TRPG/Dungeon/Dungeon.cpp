@@ -4,6 +4,7 @@
 
 #include "../Inventroy/InventoryManager.h"
 #include "../Inventroy/ItemManager.h"
+#include "../Monster/Hydra.h"
 #include "../Player/PlayerManager.h"
 
 Dungeon::Dungeon()
@@ -13,8 +14,12 @@ Dungeon::Dungeon()
 
 void Dungeon::Initalize()
 {
-    //TODO 몬스터 랜덤?
-    monster = new Slime();
+    int randomValue = rand() % 2;
+    
+    if (randomValue == 0)
+        monster = new Slime();
+    else 
+        monster = new Hydra();
 }
 
 void Dungeon::Enter()
