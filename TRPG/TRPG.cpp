@@ -4,6 +4,7 @@
 
 #include "InputHelper.h"
 #include "PrintHelper.h"
+#include "Inventroy/InventoryManager.h"
 #include "Player/PlayerManager.h"
 
 #include "Player/Archer.h"
@@ -24,10 +25,11 @@ int main(int argc, char* argv[])
 {
     //Intro();
     IntroDebug();
+    
     PlayerManager::GetInstance()->GetPlayer()->ShowJobStat();
     PlayerManager::GetInstance()->GetPlayer()->ShowCurrentStat();
-
-    //TODO 포션 사용 & 스텟 업
+    
+    ControlState();
 
     Lobby* lobby = new Lobby();
     lobby->Enter();
@@ -36,6 +38,7 @@ int main(int argc, char* argv[])
     return 0;
 }
 
+//입력 하기 귀찮아서 테스트용
 void IntroDebug()
 {
     PrintHelper::ShowIntro();
@@ -88,17 +91,60 @@ void Intro()
     
     PlayerManager::GetInstance()->SetPlayer(player);
 }
+
+//Enterable 상속받는 클래스로 분리해서 사용하는게 좋음 
 void ControlState()
 {
+    auto InventoryMgr = InventoryManager::GetInstance();
+    auto Player = PlayerManager::GetInstance()->GetPlayer();
+    InventoryMgr->AddPotion(EPotion::EHPPotion, 5);
+    InventoryMgr->AddPotion(EPotion::EMPPotion, 5);
 
-//* HP 포션 5개, MP 포션 5개가 기본 지급되었습니다.
-// ============================================
-// < 캐릭터 강화 >
-// 1. HP UP    2. MP UP    3. 공격력 2배
-// 4. 방어력 2배  5. 현재 능력치  0. 게임 시작
-// ============================================
-// 번호를 선택해주세요: 1
-// * HP가 20 증가했습니다. (HP 포션 차감: 남은 포션 4개)
-// 번호를 선택해주세요: 0
-// 게임을 시작합니다!
+    cout << "HP 포션 5개, MP 포션 5개가 기본 지급되었습니다." <<endl;
+    PrintHelper::ShowTwoLine();
+    cout << "< 캐릭터 강화 >" << endl;
+    cout << "1. HP UP" << "\t"
+    <<  "2. MP UP" << "\t"
+    <<  "3. 공격력 2배" << endl
+    <<  "4. 방어력 2배"  << "\t"
+    <<  "5. 현재 능력치" << "\t"
+    <<  "0. 게임 시작" << endl;
+    
+    bool bReadyToStart = false;
+    while (!bReadyToStart)
+    {
+        int selection = InputHelper::GetValidInput<int>("선택: ", 0, 5);
+        switch (selection)
+        {
+        case 0:
+            cout << "게임을 시작합니다!" << endl;
+            bReadyToStart = true;
+            break;
+        case 1:
+            InventoryManager::GetInstance()->UsePotion(EPotion::EHPPotion);
+            break;
+        case 2:
+            InventoryManager::GetInstance()->UsePotion(EPotion::EMPPotion);
+            break;
+        case 3:
+        {
+            int prevATK = Player->GetAtk(); 
+            int currATK = Player->GetAtk() * 2;
+            Player->SetAtk(currATK);
+            cout << "공격력 2배! " << prevATK << " -> " << currATK << endl;
+            break;
+        }
+        case 4:
+        {
+            int prevDEF = Player->GetDef(); 
+            int currDEF = Player->GetDef() * 2;
+            Player->SetDef(currDEF);
+            cout << "방어력 2배! " << prevDEF << " -> " << currDEF << endl;
+            break;
+        }
+        case 5:
+            Player->ShowCurrentStat();
+            break;
+        }
+    }
 }
