@@ -314,6 +314,7 @@
       <SDLCheck>true</SDLCheck>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Monster\Hydra.cpp" />
     <ClCompile Include="Monster\MonsterBase.cpp" />
     <ClCompile Include="Monster\Slime.cpp" />
     <ClCompile Include="Player\Archer.cpp" />
@@ -341,6 +342,7 @@
     <ClInclude Include="Inventroy\Inventory.h" />
     <ClInclude Include="Inventroy\ItemManager.h" />
     <ClInclude Include="Lobby\Lobby.h" />
+    <ClInclude Include="Monster\Hydra.h" />
     <ClInclude Include="Monster\MonsterBase.h" />
     <ClInclude Include="Monster\Slime.h" />
     <ClInclude Include="Player\Archer.h" />
