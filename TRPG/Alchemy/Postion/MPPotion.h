@@ -13,15 +13,16 @@ public:
 
     MPPotion() : PotionBase(
     "MP포션",
-PotionRecipe(vector<RequireItem>{
-    { EItem::Berry, 2 }, { EItem::Herb, 1 }
-        }))
+PotionRecipe(vector<RequireItem>
+    {{ EItem::Berry, 2 },
+        { EItem::Herb, 1 }}),
+        EPotion::EMPPotion)
     {
     }
     
     void Use() override
     {
-        //TODO : 사용시 소모
+        cout << "MP가 " << increaseAmount << "증가했습니다. (MP 포션 차감:";
         PlayerManager::GetInstance()->GetPlayer()->AddMP(increaseAmount);
     }
 };

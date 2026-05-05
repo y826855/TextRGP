@@ -11,20 +11,24 @@ class PotionBase
 {
     
 protected:
-    std::string Name;
+    string Name;
     PotionRecipe Recipe;
+    EPotion PotionID;
     
 public:
     
-    PotionBase(std::string _name, PotionRecipe _requireItems)
-        : Name(std::move(_name)), Recipe(std::move(_requireItems)) 
+    PotionBase(string _name, PotionRecipe _requireItems, EPotion _potionID)
+    : Name(move(_name)),
+    Recipe(move(_requireItems)),
+    PotionID(move(_potionID))
     {
     }
 
-    virtual std::string GetName() { return Name; }
+    virtual string GetName() { return Name; }
+    virtual EPotion GetID() { return PotionID; }
     virtual PotionRecipe GetRecipe() { return Recipe; }
 
     virtual void Use() = 0;
 
-    virtual ~PotionBase(){}
+    virtual ~PotionBase() = default;
 };

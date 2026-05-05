@@ -13,6 +13,7 @@ AlchemyManager::AlchemyManager()
 
 void AlchemyManager::InsertData(PotionBase* potion)
 {
+    PotionContainer.insert({potion->GetID(), potion});
     PotionSearchContainer.insert({ potion->GetName(), potion });
     auto requireItems = potion->GetRecipe().GetRequireItems();
 
@@ -66,6 +67,14 @@ void AlchemyManager::ShowPotionRecipe(PotionBase* potion)
     cout << potion->GetName() << " "; 
     potion->GetRecipe().ShowRequireItem();
     cout << endl;
+}
+
+PotionBase* AlchemyManager::GetPotionByID(EPotion potionID)
+{
+    auto iter = PotionContainer.find(potionID);
+    if (iter != PotionContainer.end())
+        return iter->second;
+    return nullptr;
 }
 
 AlchemyManager::~AlchemyManager()

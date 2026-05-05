@@ -10,13 +10,13 @@ class AlchemyManager : public Singleton<AlchemyManager>
 {
     friend class Singleton<AlchemyManager>;
     
-    //unordered_map<EPotion, PotionBase*> PotionContainer;
+    unordered_map<EPotion, PotionBase*> PotionContainer;
     unordered_map<string, PotionBase*> PotionSearchContainer;
     unordered_map<string, vector<PotionBase*>> PotionRequireDataContainer;            
 
     void InsertData(PotionBase* potion);
     void ShowPotionRecipe(PotionBase* potion);
-    
+
 public:
     AlchemyManager();
 
@@ -25,6 +25,7 @@ public:
     //return 포션 3개
     void SearchRecipeByName(string _searchName);
     void SearchRecipeByItemName(string _itemName);
+    PotionBase* GetPotionByID(EPotion potionID);
 
     void MakePotion()
     {

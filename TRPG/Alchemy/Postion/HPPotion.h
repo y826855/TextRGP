@@ -12,16 +12,17 @@ public:
 
     HPPotion() : PotionBase(
         "HP포션",
-    PotionRecipe(vector<RequireItem>{
-        { EItem::Water, 1 }, { EItem::Herb, 1 }
-    }))
+    PotionRecipe(vector<RequireItem>
+        {{ EItem::Water, 1 },
+            { EItem::Herb, 1 }}),
+        EPotion::EHPPotion)
     {
     }
     
     void Use() override
     {
-        //TODO : 갯수 감소
-        PlayerManager::GetInstance()->GetPlayer()->AddHP(increaseAmount);
+        auto player = PlayerManager::GetInstance()->GetPlayer();
+        cout << "HP가 " << increaseAmount << "증가했습니다. (HP 포션 차감:";
+        player->AddHP(increaseAmount);
     }
-
 };
