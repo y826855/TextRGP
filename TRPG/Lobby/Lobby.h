@@ -7,5 +7,6 @@ class Lobby : public IEnterable
 public:
     void Enter() override;
     void ShowMenu();
+    void ShowGameOver();
     void Quit() override;
 };

@@ -6,6 +6,7 @@
 #include "../Alchemy/AlchemyWorkShop.h"
 #include "../Dungeon/Dungeon.h"
 #include "../Inventroy/Inventory.h"
+#include "../Player/PlayerManager.h"
 
 using namespace std;
 
@@ -26,6 +27,11 @@ void Lobby::Enter()
         {
         case 1:
             dungeon->Enter();
+            if (PlayerManager::GetInstance()->GetPlayer()->IsDead())
+            {
+                ShowGameOver();
+                return;
+            }
             break;
         case 2:
             inventory->Enter();
@@ -51,9 +57,13 @@ void Lobby::ShowMenu()
     << "0. 게임 종료" << endl;
 }
 
+void Lobby::ShowGameOver()
+{
+    cout <<"=== 플레이어가 사망하여 게임 종료 ===" << endl;
+}
+
 void Lobby::Quit()
 {
     bIsGameStart = false;
-    
 }
 
