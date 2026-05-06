@@ -235,6 +235,8 @@
     </ClCompile>
     <ClCompile Include="Data\ItemData.cpp" />
     <ClCompile Include="Dungeon\Dungeon.cpp" />
+    <ClCompile Include="Dungeon\Floor.cpp" />
+    <ClCompile Include="Inventroy\BattleInventory.cpp" />
     <ClCompile Include="Inventroy\InventoryManager.cpp" />
     <ClCompile Include="Inventroy\Inventory.cpp" />
     <ClCompile Include="Inventroy\ItemManager.cpp" />
@@ -314,8 +316,10 @@
       <SDLCheck>true</SDLCheck>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Monster\Dragon.cpp" />
     <ClCompile Include="Monster\Hydra.cpp" />
     <ClCompile Include="Monster\MonsterBase.cpp" />
+    <ClCompile Include="Monster\Orc.cpp" />
     <ClCompile Include="Monster\Slime.cpp" />
     <ClCompile Include="Player\Archer.cpp" />
     <ClCompile Include="Player\Mage.cpp" />
@@ -335,15 +339,19 @@
     <ClInclude Include="Data\PlayerData.h" />
     <ClInclude Include="Data\PotionRecipe.h" />
     <ClInclude Include="Dungeon\Dungeon.h" />
+    <ClInclude Include="Dungeon\Floor.h" />
     <ClInclude Include="InputHelper.h" />
     <ClInclude Include="Interface\IBattleObject.h" />
     <ClInclude Include="Interface\IEnterable.h" />
+    <ClInclude Include="Inventroy\BattleInventory.h" />
     <ClInclude Include="Inventroy\InventoryManager.h" />
     <ClInclude Include="Inventroy\Inventory.h" />
     <ClInclude Include="Inventroy\ItemManager.h" />
     <ClInclude Include="Lobby\Lobby.h" />
+    <ClInclude Include="Monster\Dragon.h" />
     <ClInclude Include="Monster\Hydra.h" />
     <ClInclude Include="Monster\MonsterBase.h" />
+    <ClInclude Include="Monster\Orc.h" />
     <ClInclude Include="Monster\Slime.h" />
     <ClInclude Include="Player\Archer.h" />
     <ClInclude Include="Player\Mage.h" />
