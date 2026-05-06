@@ -1,5 +1,7 @@
 ﻿#include "InventoryManager.h"
 
+#include <algorithm>
+
 #include "ItemManager.h"
 #include "../Alchemy/AlchemyManager.h"
 
@@ -14,6 +16,11 @@ void InventoryManager::AddItem(ItemData* _item)
         Inventory.reserve(Inventory.capacity() + CHUNK_SIZE);
     
     Inventory.push_back(_item);
+
+    sort(Inventory.begin(), Inventory.end(), [](ItemData* a, ItemData* b)
+    {
+        return a->GetPrice() < b->GetPrice(); 
+    });
 }
 
 void InventoryManager::AddItem(EItem _itemID)
@@ -71,8 +78,8 @@ void InventoryManager::RemoveItem(ItemData* _item)
 void InventoryManager::ShowInventory()
 {
     //아이템 표시
-    int size = Inventory.size();
-    int capacity = Inventory.capacity();
+    auto size = Inventory.size();
+    auto capacity = Inventory.capacity();
     cout << "[ 인벤토리 ("<< size << "/" << capacity <<") ]" << endl;
 
     int i = 1;
