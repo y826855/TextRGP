@@ -10,6 +10,8 @@ enum class EItem
     Herb = 2,
     Water = 3,
     Berry = 4,
+    OrcSkin = 5,
+    DragonBone = 6,
 };
 
 struct RequireItem
@@ -38,6 +40,7 @@ public:
     ItemData& operator=(const ItemData& other);
 
     string GetName() { return Name; }
+    int GetPrice() { return Price; }
     
     void PrintInfo() const;
 };

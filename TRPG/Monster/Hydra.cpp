@@ -6,6 +6,7 @@ Hydra::Hydra() : MonsterBase(
         100,
         30,
         3,
+        5,
         RequireItem(EItem::Herb, 1)))
 {
 }

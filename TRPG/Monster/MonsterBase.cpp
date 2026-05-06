@@ -31,3 +31,8 @@ RequireItem MonsterBase::GetDropItem() const
 {
     return Data.DropItem;
 }
+
+int MonsterBase::GetExp() const
+{
+    return Data.Exp;
+}

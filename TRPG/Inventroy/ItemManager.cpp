@@ -8,6 +8,8 @@ ItemManager::ItemManager()
     ItemContainer.insert(make_pair(EItem::Berry, new ItemData("베리", 5)));
     ItemContainer.insert(make_pair(EItem::Herb, new ItemData("허브", 20)));
     ItemContainer.insert(make_pair(EItem::Water, new ItemData("물", 10)));
+    ItemContainer.insert(make_pair(EItem::OrcSkin, new ItemData("오크가죽", 100)));
+    ItemContainer.insert(make_pair(EItem::DragonBone, new ItemData("드래곤의뼈", 300)));
 }
 
 ItemData* ItemManager::GetItemByID(EItem _itemID)

@@ -6,6 +6,7 @@ Slime::Slime() : MonsterBase(
         30,
         10,
         1,
+        3,
         RequireItem(EItem::SlimeJelly, 1)))
 {
 }
