@@ -25,6 +25,8 @@ struct PlayerData
 {
     string PlayerName;
     int StatArray[4]; // HP, MP, ATK, DEF
+    int Exp = 0;
+    int Level = 1;
     EPlayerJob playerJob = EPlayerJob::None;
 
     PlayerData(const string& _name, const int* _statArray)
