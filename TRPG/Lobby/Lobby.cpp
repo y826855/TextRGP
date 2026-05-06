@@ -32,6 +32,11 @@ void Lobby::Enter()
                 ShowGameOver();
                 return;
             }
+            if (dungeon->IsClear())
+            {
+                ShowGameClear();
+                return;
+            }
             break;
         case 2:
             inventory->Enter();
@@ -60,6 +65,12 @@ void Lobby::ShowMenu()
 void Lobby::ShowGameOver()
 {
     cout <<"=== 플레이어가 사망하여 게임 종료 ===" << endl;
+}
+
+void Lobby::ShowGameClear()
+{
+    cout <<"드래곤을 처치했습니다!" << endl;
+    cout <<"=== 게임 클리어! ===" << endl;
 }
 
 void Lobby::Quit()

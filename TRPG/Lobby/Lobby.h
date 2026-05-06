@@ -8,5 +8,6 @@ public:
     void Enter() override;
     void ShowMenu();
     void ShowGameOver();
+    void ShowGameClear();
     void Quit() override;
 };

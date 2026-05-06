@@ -38,6 +38,10 @@ void InventoryManager::UsePotion(EPotion _potionID)
     if (potion == nullptr || PotionInventory[_potionID] <= 0) return;
     potion->Use();
     cout << "남은포션 " << --PotionInventory[_potionID] << "개)" << endl;
+
+    //다쓰면 제거
+    if (PotionInventory[_potionID] <= 0)
+        PotionInventory.erase(_potionID);
 }
 
 PotionBase* InventoryManager::GetHavePotionByID(EPotion _potionID)
@@ -46,6 +50,17 @@ PotionBase* InventoryManager::GetHavePotionByID(EPotion _potionID)
     if (iter != PotionInventory.end())
         return AlchemyManager::GetInstance()->GetPotionByID(_potionID);
     return nullptr;
+}
+
+vector<EPotion> InventoryManager::GetHavePotions()
+{
+    vector<EPotion> havePotions;
+    havePotions.reserve(PotionInventory.size());
+    
+    for (auto const& pair : PotionInventory)
+        if (pair.second > 0) havePotions.push_back(pair.first);
+
+    return havePotions;
 }
 
 void InventoryManager::RemoveItem(ItemData* _item)
