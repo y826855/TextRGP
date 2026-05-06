@@ -17,6 +17,9 @@ class AlchemyManager : public Singleton<AlchemyManager>
     void InsertData(PotionBase* potion);
     void ShowPotionRecipe(PotionBase* potion);
 
+    int PotionHaveCount = 3;
+    int PotionUseCount = 0;
+    
 public:
     AlchemyManager();
 
@@ -26,6 +29,10 @@ public:
     void SearchRecipeByName(string _searchName);
     void SearchRecipeByItemName(string _itemName);
     PotionBase* GetPotionByID(EPotion potionID);
+
+    void RefillPotion();
+    void ReturnEmptyPotion();
+    void AddUseCount() { PotionUseCount++; }
 
     void MakePotion()
     {

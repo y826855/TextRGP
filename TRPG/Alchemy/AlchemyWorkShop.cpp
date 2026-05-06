@@ -9,6 +9,8 @@ void AlchemyWorkShop::ShowMenu()
     << "1. 전체 레시피 보기" << endl
     << "2. 포션 이름으로 검색" << endl
     << "3. 재료로 검색" << endl
+    << "4. 포션 리필" << endl
+    << "5. 공병 반환" << endl
     << "0. 돌아가기" << endl << endl;
 }
 
@@ -21,7 +23,7 @@ void AlchemyWorkShop::Enter()
     
     while (bIsEnter)
     {
-        int selection = InputHelper::GetValidInput<int>("선택: ", 0, 3);
+        int selection = InputHelper::GetValidInput<int>("선택: ", 0, 5);
         switch (selection)
         {
         case 1:
@@ -35,7 +37,13 @@ void AlchemyWorkShop::Enter()
             inputName = InputHelper::GetValidName("검색할 재료: ", 1, 50);
             AlchemyManager::GetInstance()->SearchRecipeByItemName(inputName);
             break;
-        case 0: Quit();
+        case 4:
+            AlchemyManager::GetInstance()->RefillPotion();
+            break;
+        case 5:
+            AlchemyManager::GetInstance()->ReturnEmptyPotion();
+            break;
+        case 0: Quit(); break;
         }
     }
 }

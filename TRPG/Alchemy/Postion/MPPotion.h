@@ -3,7 +3,6 @@
 
 #include "PotionBase.h"
 #include "../../Data/PotionRecipe.h"
-#include "../../Player/PlayerManager.h"
 
 
 class MPPotion : public PotionBase
@@ -20,9 +19,5 @@ PotionRecipe(vector<RequireItem>
     {
     }
     
-    void Use() override
-    {
-        cout << "MP가 " << increaseAmount << "증가했습니다. (MP 포션 차감:";
-        PlayerManager::GetInstance()->GetPlayer()->AddMP(increaseAmount);
-    }
+    void Use() override;
 };

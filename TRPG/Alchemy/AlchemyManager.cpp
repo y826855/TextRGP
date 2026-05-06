@@ -1,4 +1,6 @@
 ﻿#include "AlchemyManager.h"
+
+#include "../Inventroy/InventoryManager.h"
 #include "../Inventroy/ItemManager.h"
 #include "Postion/HPPotion.h"
 #include "Postion/MPPotion.h"
@@ -75,6 +77,32 @@ PotionBase* AlchemyManager::GetPotionByID(EPotion potionID)
     if (iter != PotionContainer.end())
         return iter->second;
     return nullptr;
+}
+
+void AlchemyManager::RefillPotion()
+{
+    if (PotionHaveCount <= 0)
+    {
+        cout << "HP포션 지급 실패: 재고 없음!" << endl;
+        return;
+    }
+
+    cout << "HP 포션 재고: " << PotionHaveCount << endl; 
+    cout << "HP포션 지급  (재고: " << --PotionHaveCount << ")" << endl;
+    InventoryManager::GetInstance()->AddPotion(EPotion::EHPPotion, 1);
+}
+
+void AlchemyManager::ReturnEmptyPotion()
+{
+    if (PotionUseCount <= 0)
+    {
+        cout << "공병 없음! " << endl;
+        return;
+    }
+
+    cout << "공병 " << PotionUseCount << "개 반환    (재고: " << PotionUseCount + PotionHaveCount << ")" << endl;
+    PotionHaveCount += PotionUseCount;
+    PotionUseCount = 0;
 }
 
 AlchemyManager::~AlchemyManager()
