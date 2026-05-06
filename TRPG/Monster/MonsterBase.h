@@ -19,4 +19,6 @@ public:
     bool IsDead() override;
     string GetName();
     RequireItem GetDropItem() const;
+
+    virtual ~MonsterBase() {} 
 };

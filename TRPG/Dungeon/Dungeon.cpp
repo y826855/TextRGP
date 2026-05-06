@@ -55,10 +55,8 @@ void Dungeon::ShowBattleIntro()
 
 void Dungeon::AfterBattle()
 {
-    //플레이어가 죽었다면 게임 종료
-    
-    //몬스터가 죽었으면 보상 이후 종료
     if (monster->IsDead()) Victory();
+    delete monster;
 }
 
 void Dungeon::Victory() const
@@ -66,11 +64,10 @@ void Dungeon::Victory() const
     auto itemID = monster->GetDropItem().ItemID;
     auto itemName = ItemManager::GetInstance()->GetNameByID(itemID);
     InventoryManager::GetInstance()->AddItem(itemID);
+    
     cout << "★ 전투 승리!" << endl;
     cout << " -> " << itemName << " 획득!" << endl;
     cout << " -> 인벤토리에 저장되었습니다." << endl;
 
     InventoryManager::GetInstance()->ShowInventory();
-    
-    delete monster;
 }

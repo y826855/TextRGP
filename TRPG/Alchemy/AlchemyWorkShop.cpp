@@ -21,7 +21,7 @@ void AlchemyWorkShop::Enter()
     
     while (bIsEnter)
     {
-        int selection = InputHelper::GetValidInput<int>("선택: ", 0, 4);
+        int selection = InputHelper::GetValidInput<int>("선택: ", 0, 3);
         switch (selection)
         {
         case 1:

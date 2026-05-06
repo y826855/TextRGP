@@ -46,5 +46,5 @@ public:
     void AddDef(int _def) const { Data->StatArray[EStat::DEF] += _def; }
     void AddAtk(int _atk) const { Data->StatArray[EStat::ATK] += _atk; }
 
-    ~PlayerBase() override { delete Data; }
+    ~PlayerBase() { delete Data; }
 };
