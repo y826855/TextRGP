@@ -43,8 +43,8 @@ void IntroDebug()
 {
     PrintHelper::ShowIntro();
     string name = "테스트";
-    int inputStat[4] = { 50, 50 , 20 ,20};
-    int jobSelection = 1;
+    int inputStat[4] = { 50, 50 , 40 ,40};
+    int jobSelection = 3;
 
     PlayerBase* player = nullptr;
     
