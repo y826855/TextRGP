@@ -43,7 +43,7 @@
 
 
 
-*   **Interfaces (`IHitable`, `ISavable`)**: '타격 가능함', '저장 가능함' 등의 추상적인 행위를 정의합니다.
+*   **Interfaces (`IBattleObject`)**: '타격 가능함', '피격 가능함' 등의 추상적인 행위를 정의합니다.
 *   **CreatureBase (Abstract Class)**: 이름, HP, MP, 공격력 등 모든 생명체의 공통 스탯과 `TakeDamage()` 같은 핵심 로직을 포함합니다.
 *   **Player & Monster (Concrete Class)**:
     *   **Player**: 레벨업 시스템, 경험치 관리, 인벤토리 상호작용 로직이 추가됩니다.
